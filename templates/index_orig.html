@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calendar variables</title>
+    <!-- css only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" type = "text/css" href ="templates/css/style.css"> <!-- Latest compiled and minified css -->
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+
+    <style>
+        .box{
+            padding-top: 20px;
+            display: none;
+        }
+        h2 {
+          text-align: center;
+          padding: 10px
+        }
+        label{ margin-right: 15px; }
+    </style>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('input[type="radio"]').click(function(){
+        var inputValue = $(this).attr("value");
+        var targetBox = $("." + inputValue);
+        $(".box").not(targetBox).hide();
+        $(targetBox).show();
+    });
+});
+</script>
+
+<body>
+<div style="width:80%; margin-left:10%">
+  <h2>Public Holidays in Germany</h2>
+    <form id="test_form" method="POST" enctype="multipart/form-data" action="/submitform">
+      <input type="text" name="assignment">
+    </form>
+    <form style="margin-top: 50px"  method = "POST" enctype="multipart/form-data">
+    <div class="form-group form-box">
+      <label for="start_date">Start Date</label>
+      <input type="date" name="start_date" class="form-control" id="start_date" aria-describedby="dateHelper" placeholder="">
+      <small id="dateHelper" class="form-text text-muted">Start Date for exported report</small>
+    </div>
+        </br>
+    <div class="form-group form-box">
+      <label for="end_date">End Date</label>
+      <input type="date" name="end_date" class="form-control" id="end_date" aria-describedby="dateHelperEnd" placeholder="">
+      <small id="dateHelperEnd" class="form-text text-muted">End Date for exported report</small>
+    </div>
+    </br>
+
+     <div>
+         <label class="form-label" for="keywords">Timely granularity:</label>
+         </br>
+        <label><input type="radio" name="colorRadio" value="red"> Daily </label>
+        <label><input type="radio" name="colorRadio" value="green"> Weekly</label>
+    </div>
+    <br>
+    <div>
+         <label class="form-label" for="keywords">Geo-granularity:</label>
+         </br>
+        <label><input type="radio" name="colorRadio" value="red"> State (Bundesland) </label>
+        <label><input type="radio" name="colorRadio" value="green"> Germany </label>
+    </div>
+
+     <div>
+         <div>
+        <label><input type="radio" name="colorRadio" value="red"> Enter Single Keyword</label>
+        <label><input type="radio" name="colorRadio" value="green"> Upload Multiple Keywords as File</label>
+    </div>
+    <div class="red box">
+        <div class="form-group form-box">
+      <label for="single_keyword">Keyword</label>
+      <input type="text" name="single_keyword" class="form-control" id="single_keyword" aria-describedby="dateHelperEnd" placeholder="">
+      <small id="dateHelperEnd" class="form-text text-muted">Single Keyword</small>
+    </div>
+
+    </div>
+    <div class="green box">
+        <div class="form-group form-box">
+      <label class="form-label" for="keywords">Keywords</label>
+      <input type="file" class="form-control" name ="file" class="form-control-file" id="keywords">
+      <small id="dateHelperEnd" class="form-text text-muted">Please select your "keyword_list.csv" File</small>
+
+    </div>
+    </div>
+    </div>
+
+    <button href="#myModal" name="submit"data-toggle="modal"type="submit" class="btn btn-primary" value = "calculate">Download report</button>
+    <button name = "submit" type="submit" class="btn btn-secondary" value ="example">Download Sample</button>
+  </form>
+    <br>
+    <br>
+    <br>
+
+  <div>
+
+          <!-- Button HTML (to Trigger Modal) -->
+
+      <!-- Modal HTML -->
+      <div id="myModal" class="modal fade" style="margin-top:50px">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <div >
+
+                    <p style="text-align:center"> Thank you for your request.<br> We're currently processing your data.<br> Once finished, a download with your requested files will start automatically! </p>
+                    <img style="margin: 0 25% " src="http://i.stack.imgur.com/SBv4T.gif" alt="this slowpoke moves"  width="250" />
+                  </div>
+
+                  <div style="" class="d-flex justify-content-center">
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <!--
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  -->
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>

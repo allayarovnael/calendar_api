@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calendar variables</title>
+    <!--bootstrap css:-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <style>
+      .box{
+          padding-top: 20px;
+          display: none;
+      }
+      h2{
+        text-align: center;
+        padding: 10px
+      }
+      label{ margin-right: 15px; }
+  </style>
+  </head>
+  <body>
+    <h2>Public Holidays in Germany</h2>
+    <div style="width:80%; margin-left:10%">
+      <form action="/submitform" method="POST" enctype="multipart/form-data" name="form_data">
+  
+        <!--start date:-->
+        <div class="form-group form-box" >
+          <label for="start_date">Start Date</label>
+          <input type="date" name="start_date" class="form-control" id="start_date" aria-describedby="dateHelper" placeholder="" value="2020-01-01">
+          <small id="dateHelperStart" class="form-text text-muted">Start Date for exported report</small>
+        </div>
+
+      </br>
+        
+        <!--end date:-->
+        <div class="form-group form-box" >
+          <label for="end_date">End Date</label>
+          <input type="date" name="end_date" class="form-control" id="end_date" aria-describedby="dateHelperEnd" placeholder="" value="2021-12-31">
+          <small id="dateHelperEnd" class="form-text text-muted">End Date for exported report</small>
+        </div>
+      
+      </br>
+        
+        <!--time granularity:-->
+        <div>
+          <fieldset>
+            <label class="form-label">Select the timely aggregation:</label></br>
+            <input type="radio" name="time_choice" value="daily" checked="checked"/><label for="daily">Daily</label><br/>
+            <input type="radio" name="time_choice" value="weekly"/><label for="weekly">Weekly</label><br/>
+          </fieldset>
+        </div>
+        
+      </br>
+
+        <!--geo granulrity:-->
+        <div>
+          <fieldset>
+            <label class="form-label">Select the geographical aggregation:</label></br>
+            <input type="radio" name="geo_choice" value="state" checked="checked"/><label for="state">State</label><br/>
+            <input type="radio" name="geo_choice" value="country"/><label for="country">Germany</label><br/>
+          </fieldset>
+        </div>
+
+      </br>
+
+        <button name ="submit" type="submit" class="btn btn-primary" value="example">Download report</button>
+
+      </form>
+    </div>
+    
+  </body>
+</html>
